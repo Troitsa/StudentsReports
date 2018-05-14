@@ -1,12 +1,13 @@
-package connectionManager;
+package db.connectionManager;
 
+import org.apache.log4j.Logger;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionManagerJDBCImpl implements ConnectionManager{
     private static ConnectionManager connectionManager;
-
+    private static final Logger loggerError = Logger.getLogger(ConnectionManagerJDBCImpl.class);
     public static ConnectionManager getInstance(){
         if (connectionManager == null){
             connectionManager = new ConnectionManagerJDBCImpl();
@@ -28,9 +29,9 @@ public class ConnectionManagerJDBCImpl implements ConnectionManager{
                     "postgres",
                     "rose03");
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            loggerError.error("ClassNotFoundException at method getConnection", e);
         } catch (SQLException e) {
-            e.printStackTrace();
+            loggerError.error("SQLException at method getConnection", e);
         }
         return connection;
     }

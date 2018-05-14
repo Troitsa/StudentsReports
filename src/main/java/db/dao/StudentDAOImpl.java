@@ -1,12 +1,12 @@
-package dao;
+package db.dao;
 
-
-import connectionManager.ConnectionManager;
-import connectionManager.ConnectionManagerJDBCImpl;
+import db.connectionManager.ConnectionManager;
+import db.connectionManager.ConnectionManagerJDBCImpl;
 import org.apache.log4j.Logger;
 import pojo.Student;
-
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class StudentDAOImpl implements StudentDAO{
     private static final Logger logger = Logger.getLogger(StudentDAOImpl.class);
@@ -21,7 +21,7 @@ public class StudentDAOImpl implements StudentDAO{
         statement.setInt(1, student.getId());
         statement.setString(2, student.getName());
         statement.setString(3, student.getSurname());
-        statement.setInt(4, student.getGroups_id());
+        statement.setInt(4, student.getGroupsId());
         statement.executeUpdate();
         connection.close();
         logger.info("Class StudentDAOImpl method addStudent finished");
@@ -57,7 +57,7 @@ public class StudentDAOImpl implements StudentDAO{
         statement.setInt(1, student.getId());
         statement.setString(2, student.getName());
         statement.setString(3, student.getSurname());
-        statement.setInt(4, student.getGroups_id());
+        statement.setInt(4, student.getGroupsId());
         statement.executeUpdate();
         connection.close();
         logger.info("Class StudentDAOImpl method updateStudent finished");
@@ -73,5 +73,26 @@ public class StudentDAOImpl implements StudentDAO{
         statement.executeUpdate();
         connection.close();
         logger.info("Class StudentDAOImpl method deleteStudentById finished");
+    }
+
+    @Override
+    public List<Student> getAllStudentsByGroupId(int id) throws SQLException {
+        logger.info("Class StudentDAOImpl method getAllStudentsByGroupId started");
+        Connection connection = connectionManager.getConnection();
+        PreparedStatement statement = connection.prepareStatement("SELECT * " +
+                "FROM student WHERE groups_id = ?");
+        statement.setInt(1, id);
+        ResultSet resultSet = statement.executeQuery();
+        ArrayList<Student> students = new ArrayList<>();
+        while (resultSet.next()) {
+            students.add(new Student(
+                    resultSet.getInt("id"),
+                    resultSet.getString("name"),
+                    resultSet.getString("surname"),
+                    resultSet.getInt("groups_id")));
+        }
+        connection.close();
+        logger.info("Class StudentDAOImpl method getAllStudentsByGroupId finished");
+        return students;
     }
 }

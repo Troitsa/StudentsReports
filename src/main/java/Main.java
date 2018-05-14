@@ -1,10 +1,3 @@
-import dao.*;
-import pojo.Course;
-import pojo.Group;
-import pojo.Student;
-
-import java.sql.SQLException;
-
 public class Main {
     public static void main(String[] args) {
 //        Course course = new Course(1,"Java");

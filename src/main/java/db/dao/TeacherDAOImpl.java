@@ -1,16 +1,20 @@
-package dao;
+package db.dao;
 
 
-import connectionManager.ConnectionManager;
-import connectionManager.ConnectionManagerJDBCImpl;
+import db.connectionManager.ConnectionManager;
+import db.connectionManager.ConnectionManagerJDBCImpl;
+import org.apache.log4j.Logger;
 import pojo.Teacher;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TeacherDAOImpl implements TeacherDAO{
+    private static final Logger logger = Logger.getLogger(StudentDAOImpl.class);
     private static ConnectionManager connectionManager = ConnectionManagerJDBCImpl.getInstance();
     @Override
     public void addTeacher(Teacher teacher) throws SQLException {
@@ -62,5 +66,24 @@ public class TeacherDAOImpl implements TeacherDAO{
         statement.setInt(1, id);
         statement.executeUpdate();
         connection.close();
+    }
+
+    @Override
+    public List<Teacher> getAllTeachers() throws SQLException {
+        logger.info("Class TeacherDAOImpl method getAllTeachers started");
+        Connection connection = connectionManager.getConnection();
+        PreparedStatement statement = connection.prepareStatement("SELECT * " +
+                "FROM teacher");
+        ResultSet resultSet = statement.executeQuery();
+        ArrayList<Teacher> teachers = new ArrayList<>();
+        while (resultSet.next()) {
+            teachers.add(new Teacher(
+                    resultSet.getInt("id"),
+                    resultSet.getString("name"),
+                    resultSet.getString("surname")));
+        }
+        connection.close();
+        logger.info("Class TeacherDAOImpl method getAllTeachers finished");
+        return teachers;
     }
 }

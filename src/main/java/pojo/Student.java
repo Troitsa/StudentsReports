@@ -4,21 +4,21 @@ public class Student {
     private int id;
     private String name;
     private String surname;
-    private int groups_id;
+    private int groupsId;
     private Group group;
 
-    public Student(int id, String name, String surname, int groups_id) {
+    public Student(int id, String name, String surname, int groupsId) {
         this.id = id;
         this.name = name;
         this.surname = surname;
-        this.groups_id = groups_id;
+        this.groupsId = groupsId;
     }
 
-    public Student(int id, String name, String surname, int groups_id, Group group) {
+    public Student(int id, String name, String surname, int groupsId, Group group) {
         this.id = id;
         this.name = name;
         this.surname = surname;
-        this.groups_id = groups_id;
+        this.groupsId = groupsId;
         this.group = group;
     }
 
@@ -46,12 +46,12 @@ public class Student {
         this.surname = surname;
     }
 
-    public int getGroups_id() {
-        return groups_id;
+    public int getGroupsId() {
+        return groupsId;
     }
 
-    public void setGroups_id(int groups_id) {
-        this.groups_id = groups_id;
+    public void setGroupsId(int groupsId) {
+        this.groupsId = groupsId;
     }
 
     public Group getGroup() {

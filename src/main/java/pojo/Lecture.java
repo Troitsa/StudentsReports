@@ -4,25 +4,18 @@ import java.util.Date;
 
 public class Lecture {
     private int id;
-    private int lesson_id;
-    private int groups_id;
+    private String title;
+    private int lessonId;
+    private int groupsId;
     private Date date;
     private Date time;
     private Lesson lesson;
     private Group groups;
 
-    public Lecture(int id, int lesson_id, int groups_id) {
+    public Lecture(int id, int lessonId, int groupsId) {
         this.id = id;
-        this.lesson_id = lesson_id;
-        this.groups_id = groups_id;
-    }
-
-    public Lecture(int id, int lesson_id, int groups_id, Lesson lesson, Group groups) {
-        this.id = id;
-        this.lesson_id = lesson_id;
-        this.groups_id = groups_id;
-        this.lesson = lesson;
-        this.groups = groups;
+        this.lessonId = lessonId;
+        this.groupsId = groupsId;
     }
 
     public int getId() {
@@ -33,20 +26,20 @@ public class Lecture {
         this.id = id;
     }
 
-    public int getLesson_id() {
-        return lesson_id;
+    public int getLessonId() {
+        return lessonId;
     }
 
-    public void setLesson_id(int lesson_id) {
-        this.lesson_id = lesson_id;
+    public void setLessonId(int lessonId) {
+        this.lessonId = lessonId;
     }
 
-    public int getGroups_id() {
-        return groups_id;
+    public int getGroupsId() {
+        return groupsId;
     }
 
-    public void setGroups_id(int groups_id) {
-        this.groups_id = groups_id;
+    public void setGroupsId(int groupsId) {
+        this.groupsId = groupsId;
     }
 
     public Lesson getLesson() {
@@ -69,11 +62,19 @@ public class Lecture {
         return time;
     }
 
-    public void setTime(Date time) {
-        this.time = new java.sql.Date(date.getTime());;
-    }
-
     public Date getDate() {
         return date;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

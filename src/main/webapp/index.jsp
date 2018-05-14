@@ -1,16 +1,11 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: User
-  Date: 05.05.2018
-  Time: 15:25
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-  <head>
-    <title>$Title$</title>
-  </head>
-  <body>
-  $END$
-  </body>
-</html>
+<%@ include file="header.jsp" %>
+<div class="container">
+  <main class="content">
+    <h1>Добро пожаловать в систему учета успеваемости студентов.</h1>
+
+  </main><!-- .content -->
+</div>
+<!-- .container-->
+<%@ include file="aside.jsp" %>
+<%@ include file="footer.jsp" %>

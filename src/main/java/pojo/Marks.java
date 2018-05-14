@@ -2,23 +2,25 @@ package pojo;
 
 public class Marks {
     private int id;
-    private int student_id;
-    private int lecture_id;
+    private int studentId;
+    private int lectureId;
     private Student student;
     private Lecture lecture;
+    private String lectureTitle;
     private String date;
     private int mark;
 
-    public Marks(int id, String date, int mark) {
+    public Marks(int id, String date, String lectureTitle, int mark) {
         this.id = id;
         this.date = date;
+        this.lectureTitle = lectureTitle;
         this.mark = mark;
     }
 
-    public Marks(int id, int student_id, int lecture_id, int mark) {
+    public Marks(int id, int studentId, int lectureId, int mark) {
         this.id = id;
-        this.student_id = student_id;
-        this.lecture_id = lecture_id;
+        this.studentId = studentId;
+        this.lectureId = lectureId;
         this.mark = mark;
     }
 
@@ -30,15 +32,6 @@ public class Marks {
         this.date = date;
     }
 
-    public Marks(int id, int student_id, int lecture_id, Student student, Lecture lecture, int mark) {
-        this.id = id;
-        this.student_id = student_id;
-        this.lecture_id = lecture_id;
-        this.student = student;
-        this.lecture = lecture;
-        this.mark = mark;
-    }
-
     public int getId() {
         return id;
     }
@@ -47,20 +40,20 @@ public class Marks {
         this.id = id;
     }
 
-    public int getStudent_id() {
-        return student_id;
+    public int getStudentId() {
+        return studentId;
     }
 
-    public void setStudent_id(int student_id) {
-        this.student_id = student_id;
+    public void setStudentId(int studentId) {
+        this.studentId = studentId;
     }
 
-    public int getLecture_id() {
-        return lecture_id;
+    public int getLectureId() {
+        return lectureId;
     }
 
-    public void setLecture_id(int lecture_id) {
-        this.lecture_id = lecture_id;
+    public void setLectureId(int lectureId) {
+        this.lectureId = lectureId;
     }
 
     public int getMark() {
@@ -85,6 +78,14 @@ public class Marks {
 
     public void setLecture(Lecture lecture) {
         this.lecture = lecture;
+    }
+
+    public String getLectureTitle() {
+        return lectureTitle;
+    }
+
+    public void setLectureTitle(String lectureTitle) {
+        this.lectureTitle = lectureTitle;
     }
 
     @Override

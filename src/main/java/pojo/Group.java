@@ -2,17 +2,17 @@ package pojo;
 
 public class Group {
     private int id;
-    private int course_id;
+    private int courseId;
     private Course course;
 
-    public Group(int id, int course_id) {
+    public Group(int id, int courseId) {
         this.id = id;
-        this.course_id = course_id;
+        this.courseId = courseId;
     }
 
-    public Group(int id, int course_id, Course course) {
+    public Group(int id, int courseId, Course course) {
         this.id = id;
-        this.course_id = course_id;
+        this.courseId = courseId;
         this.course = course;
     }
 
@@ -24,12 +24,12 @@ public class Group {
         this.id = id;
     }
 
-    public int getCourse_id() {
-        return course_id;
+    public int getCourseId() {
+        return courseId;
     }
 
-    public void setCourse_id(int course_id) {
-        this.course_id = course_id;
+    public void setCourseId(int courseId) {
+        this.courseId = courseId;
     }
 
     public Course getCourse() {

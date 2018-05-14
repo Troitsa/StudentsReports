@@ -3,10 +3,32 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
-    <display-name>StudentsReport</display-name>
+    <display-name>Groups</display-name>
+    <servlet>
+        <servlet-name>groups</servlet-name>
+        <servlet-class>controller.GroupsController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>groups</servlet-name>
+        <url-pattern>/groups</url-pattern>
+    </servlet-mapping>
+
+    <display-name>Group</display-name>
+    <servlet>
+        <servlet-name>group</servlet-name>
+        <servlet-class>controller.GroupController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>group</servlet-name>
+        <url-pattern>/group</url-pattern>
+    </servlet-mapping>
+
+    <display-name>Students</display-name>
     <servlet>
         <servlet-name>students</servlet-name>
-        <servlet-class>view.StudentsReport</servlet-class>
+        <servlet-class>controller.StudentsController</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -14,4 +36,21 @@
         <url-pattern>/students</url-pattern>
     </servlet-mapping>
 
+
+    <display-name>StudentsReport</display-name>
+    <servlet>
+        <servlet-name>studentsReport</servlet-name>
+        <servlet-class>controller.StudentsReportController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>studentsReport</servlet-name>
+        <url-pattern>/student-report</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>/sources/*</url-pattern>
+    </servlet-mapping>
 </web-app>

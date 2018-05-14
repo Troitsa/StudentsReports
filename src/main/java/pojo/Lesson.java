@@ -2,23 +2,26 @@ package pojo;
 
 public class Lesson {
     private int id;
-    private int course_id;
-    private int teacher_id;
+    private String title;
+    private int courseId;
+    private int teacherId;
     private int hours;
     private Course course;
     private Teacher teacher;
 
-    public Lesson(int id, int course_id, int teacher_id, int hours) {
+    public Lesson(int id, String title, int courseId, int teacherId, int hours) {
         this.id = id;
-        this.course_id = course_id;
-        this.teacher_id = teacher_id;
+        this.title = title;
+        this.courseId = courseId;
+        this.teacherId = teacherId;
         this.hours = hours;
     }
 
-    public Lesson(int id, int course_id, int teacher_id, int hours, Course course, Teacher teacher) {
+    public Lesson(int id, String title, int courseId, int teacherId, int hours, Course course, Teacher teacher) {
         this.id = id;
-        this.course_id = course_id;
-        this.teacher_id = teacher_id;
+        this.title = title;
+        this.courseId = courseId;
+        this.teacherId = teacherId;
         this.hours = hours;
         this.course = course;
         this.teacher = teacher;
@@ -32,20 +35,20 @@ public class Lesson {
         this.id = id;
     }
 
-    public int getCourse_id() {
-        return course_id;
+    public int getCourseId() {
+        return courseId;
     }
 
-    public void setCourse_id(int course_id) {
-        this.course_id = course_id;
+    public void setCourseId(int courseId) {
+        this.courseId = courseId;
     }
 
-    public int getTeacher_id() {
-        return teacher_id;
+    public int getTeacherId() {
+        return teacherId;
     }
 
-    public void setTeacher_id(int teacher_id) {
-        this.teacher_id = teacher_id;
+    public void setTeacherId(int teacherId) {
+        this.teacherId = teacherId;
     }
 
     public int getHours() {
@@ -70,5 +73,13 @@ public class Lesson {
 
     public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

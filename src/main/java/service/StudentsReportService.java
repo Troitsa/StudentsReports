@@ -1,20 +1,20 @@
 package service;
 
-import dao.MarksDAO;
-import dao.MarksDAOImpl;
-import dao.StudentDAO;
-import dao.StudentDAOImpl;
+import db.dao.MarksDAO;
+import db.dao.MarksDAOImpl;
+import db.dao.StudentDAO;
+import db.dao.StudentDAOImpl;
 import org.apache.log4j.Logger;
 import pojo.Marks;
 import pojo.Student;
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.List;
 
 public class StudentsReportService {
     private static final Logger logger = Logger.getLogger(StudentsReportService.class);
     private static final Logger loggerError = Logger.getLogger(StudentsReportService.class);
-    public MarksDAO marksDAO = new MarksDAOImpl();
-    public StudentDAO studentDAO = new StudentDAOImpl();
+    private MarksDAO marksDAO = new MarksDAOImpl();
+    private StudentDAO studentDAO = new StudentDAOImpl();
 
     public Student getStudentById(int id) {
         logger.info("Class StudentsReportService method getStudentById started");
@@ -28,9 +28,9 @@ public class StudentsReportService {
         return student;
     }
 
-    public ArrayList<Marks> getMarksByStudentId(int id) {
+    public List<Marks> getMarksByStudentId(int id) {
         logger.info("Class StudentsReportService method getMarksByStudentId  started");
-        ArrayList<Marks> marksList = null;
+        List<Marks> marksList = null;
         try {
             marksList = marksDAO.getMarksByStudentId(id);
         } catch (SQLException e) {
@@ -39,5 +39,4 @@ public class StudentsReportService {
         logger.info("Class StudentsReportService method getMarksByStudentId  finished");
         return marksList;
     }
-
 }
