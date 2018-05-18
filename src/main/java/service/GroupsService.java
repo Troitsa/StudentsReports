@@ -30,14 +30,14 @@ public class GroupsService {
 
 
     public List<Student> getAllStudentsByGroupId(int id) {
-        logger.info("Class StudentsService method getAllStudentsByGroupId started");
+        logger.info("Class GroupsService method getAllStudentsByGroupId started");
         List<Student> students = null;
         try {
             students = studentDAO.getAllStudentsByGroupId(id);
         } catch (SQLException e) {
             loggerError.error("Error at method getAllStudentsByGroupId", e);
         }
-        logger.info("Class StudentsService method getAllStudentsByGroupId finished");
+        logger.info("Class GroupsService method getAllStudentsByGroupId finished");
         return students;
     }
 }

@@ -1,6 +1,6 @@
 <%@ page import="pojo.Student" %>
 <%@ page import="pojo.Marks" %>
-<%@ page import="service.StudentsReportService" %>
+<%@ page import="service.StudentService" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -8,17 +8,21 @@
 <div class="container">
     <main class="content">
         <%
-            StudentsReportService studentsReportService = new StudentsReportService();
+            StudentService studentService = new StudentService();
             String studentId = request.getParameter("studentId");
-            Student student = studentsReportService.getStudentById(Integer.parseInt(studentId));
-            List<Marks> marks = studentsReportService.getMarksByStudentId(Integer.parseInt(studentId));
+            Student student = studentService.getStudentById(Integer.parseInt(studentId));
+            List<Marks> marks = studentService.getMarksByStudentId(Integer.parseInt(studentId));
             request.setAttribute("student", student);
             request.setAttribute("marks", marks);
         %>
         <%
-            if(student!=null) {
+            if(student==null) {
         %>
-            <h1><%=student.getName()%>  <%=student.getSurname()%></h1>
+        <h1>Запрашиваемый студент не существует.</h1>
+        <%
+        } else {
+        %>
+            <h1><%=student.getName()%>  <%=student.getSurname()%> (<a href="student.jsp?id=${student.id}" class="edit">редактировать</a>)</h1>
             <% if (!marks.isEmpty()) {%>
                 <table border="1">
                     <tr>

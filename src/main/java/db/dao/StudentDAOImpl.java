@@ -52,12 +52,12 @@ public class StudentDAOImpl implements StudentDAO{
     public void updateStudent(Student student) throws SQLException {
         logger.info("Class StudentDAOImpl method updateStudent started");
         Connection connection = connectionManager.getConnection();
-        String sql = "UPDATE student SET id = ?, name = ?, surname = ?, groups_id  = ?";
+        String sql = "UPDATE student SET name = ?, surname = ?, groups_id  = ? WHERE id = ?";
         PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setInt(1, student.getId());
-        statement.setString(2, student.getName());
-        statement.setString(3, student.getSurname());
-        statement.setInt(4, student.getGroupsId());
+        statement.setString(1, student.getName());
+        statement.setString(2, student.getSurname());
+        statement.setInt(3, student.getGroupsId());
+        statement.setInt(4, student.getId());
         statement.executeUpdate();
         connection.close();
         logger.info("Class StudentDAOImpl method updateStudent finished");

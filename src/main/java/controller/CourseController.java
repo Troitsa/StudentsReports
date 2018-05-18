@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class CourseController extends HttpServlet {
-    private static final Logger logger = Logger.getLogger(GroupController.class);
+    private static final Logger logger = Logger.getLogger(CourseController.class);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

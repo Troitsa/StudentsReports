@@ -8,8 +8,8 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class TeacherService {
-    private static final Logger logger = Logger.getLogger(StudentsService.class);
-    private static final Logger loggerError = Logger.getLogger(GroupsService.class);
+    private static final Logger logger = Logger.getLogger(TeacherService.class);
+    private static final Logger loggerError = Logger.getLogger(TeacherService.class);
     private TeacherDAO teacherDAO = new TeacherDAOImpl();
 
     public List<Teacher> getAllTeachers() {

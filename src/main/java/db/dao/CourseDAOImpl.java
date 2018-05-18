@@ -17,19 +17,22 @@ public class CourseDAOImpl implements CourseDAO{
     public void addCourse(Course course) throws SQLException {
         Connection connection = connectionManager.getConnection();
         String sql = "INSERT INTO course (id,title) VALUES (?,?)";
-        PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setInt(1, course.getId());
-        statement.setString(2, course.getTitle());
-        statement.executeUpdate();
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, course.getId());
+            statement.setString(2, course.getTitle());
+            statement.executeUpdate();
+        }
     }
 
     @Override
     public Course getCourseById(int id) throws SQLException {
         Connection connection = connectionManager.getConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT * " +
-                "FROM course WHERE id = ?");
-        statement.setInt(1, id);
-        ResultSet resultSet = statement.executeQuery();
+        ResultSet resultSet;
+        try (PreparedStatement statement = connection.prepareStatement("SELECT * " +
+                "FROM course WHERE id = ?")) {
+            statement.setInt(1, id);
+            resultSet = statement.executeQuery();
+        }
         Course course = null;
         if (resultSet.next()){
             course = new Course(
@@ -44,10 +47,11 @@ public class CourseDAOImpl implements CourseDAO{
     public void updateCourse(Course course) throws SQLException {
         Connection connection = connectionManager.getConnection();
         String sql = "UPDATE group SET id = ?, title = ?";
-        PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setInt(1, course.getId());
-        statement.setString(2, course.getTitle());
-        statement.executeUpdate();
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, course.getId());
+            statement.setString(2, course.getTitle());
+            statement.executeUpdate();
+        }
         connection.close();
     }
 
@@ -55,9 +59,10 @@ public class CourseDAOImpl implements CourseDAO{
     public void deleteCourseById(int id) throws SQLException {
         Connection connection = connectionManager.getConnection();
         String sql = "DELETE FROM course WHERE id=?";
-        PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setInt(1, id);
-        statement.executeUpdate();
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, id);
+            statement.executeUpdate();
+        }
         connection.close();
     }
 
@@ -65,9 +70,9 @@ public class CourseDAOImpl implements CourseDAO{
     public ArrayList<Course> getAllCourses() throws SQLException {
         logger.info("Class CourseDAOImpl method getAllCourses started");
         Connection connection = connectionManager.getConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT * " +
-                "FROM course");
-        ResultSet resultSet = statement.executeQuery();
+        ResultSet resultSet;
+        PreparedStatement statement = connection.prepareStatement("SELECT * FROM course");
+        resultSet = statement.executeQuery();
         ArrayList<Course> courses = new ArrayList<>();
         while (resultSet.next()) {
             courses.add(new Course(

@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class TeacherController extends HttpServlet {
-    private static final Logger logger = Logger.getLogger(StudentsController.class);
+    private static final Logger logger = Logger.getLogger(TeacherController.class);
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         logger.info("Class TeacherController method doGet started");

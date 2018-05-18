@@ -25,22 +25,22 @@
         <url-pattern>/group</url-pattern>
     </servlet-mapping>
 
-    <display-name>Students</display-name>
+    <display-name>Student</display-name>
     <servlet>
-        <servlet-name>students</servlet-name>
-        <servlet-class>controller.StudentsController</servlet-class>
+        <servlet-name>student</servlet-name>
+        <servlet-class>controller.StudentController</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>students</servlet-name>
-        <url-pattern>/students</url-pattern>
+        <servlet-name>student</servlet-name>
+        <url-pattern>/student</url-pattern>
     </servlet-mapping>
 
 
     <display-name>StudentsReport</display-name>
     <servlet>
         <servlet-name>studentsReport</servlet-name>
-        <servlet-class>controller.StudentsReportController</servlet-class>
+        <servlet-class>controller.StudentReportController</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -48,6 +48,16 @@
         <url-pattern>/student-report</url-pattern>
     </servlet-mapping>
 
+    <display-name>Courses</display-name>
+    <servlet>
+        <servlet-name>courses</servlet-name>
+        <servlet-class>controller.CourseController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>courses</servlet-name>
+        <url-pattern>/courses</url-pattern>
+    </servlet-mapping>
 
     <servlet-mapping>
         <servlet-name>default</servlet-name>
